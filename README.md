@@ -1,4 +1,7 @@
-# react-spa-prerender
+# react-spa-prerender-faster
+
+Forked from: https://github.com/sPavl0v/react-spa-prenderer
+
 The easiest way to prerender static pages, optimize SEO and build high performance for your React SPA.
 Build production-ready code just by adding few lines of code.
 * [Example of usage with create-react-app](https://github.com/sPavl0v/react-spa-prenderer/tree/master/examples/cra)
@@ -13,23 +16,23 @@ Follow the steps below:
 ## Install
 With npm
 ```
-npm install react-spa-prerender --save-dev
+npm install react-spa-prerender-faster --save-dev
 ```
 With yarn
 ```
-yarn add react-spa-prerender --dev
+yarn add react-spa-prerender-faster --dev
 ```
 
 ## Add as postbuild script
 In your package.json add the following in the scripts section:
 ```
 "scripts": {
-    "postbuild": "react-spa-prerender",
+    "postbuild": "react-spa-prerender-faster",
 }
 ```
 
 ## Add .rsp.json file
-__.rsp.json__ is the configuration file for `react-spa-prerender`. Create this file in your __application root folder__.
+__.rsp.json__ is the configuration file for `react-spa-prerender-faster`. Create this file in your __application root folder__.
 The minimum configuration requires the __routes__ you want to be parsed.
 Example:
 ```
