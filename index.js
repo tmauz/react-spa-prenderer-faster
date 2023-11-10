@@ -77,8 +77,18 @@ async function createNewHTMLPage(route, html, dir) {
 async function getHTMLfromPuppeteerPage(browser, pageUrl, options) {
   try {
     const page = await browser.newPage();
+    await page.setRequestInterception(true);
 
-    await page.goto(pageUrl, Object.assign({waitUntil: 'networkidle0'}, options));
+    page.on('request', req => {
+      const allowlist = ['document', 'script', 'xhr', 'fetch'];
+      if (!allowlist.includes(req.resourceType())) {
+        //console.log(`Skipping "${req.url()}" "${req.resourceType()}"`);
+        return req.abort();
+      }
+      req.continue();
+    });
+
+    await page.goto(pageUrl, Object.assign({waitUntil: 'domcontentloaded'}, options));
 
     const html = await page.content();
     if (!html) return 0;
